@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "index_auto_sync")
 @Entity
 public class AutoSyncConfig {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -44,6 +45,10 @@ public class AutoSyncConfig {
 
   public static AutoSyncConfig create(IndexInfo indexInfo, boolean enabled) {
     return new AutoSyncConfig(indexInfo, enabled);
+  }
+
+  public void update(boolean newEnabled) {
+    this.enabled = newEnabled;
   }
 
   public void enableAutoSync() {
