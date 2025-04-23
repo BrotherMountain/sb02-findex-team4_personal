@@ -50,6 +50,7 @@ public class BasicAutoSyncConfigService implements AutoSyncConfigService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public CursorPageResponseAutoSyncConfigDto findAll(AutoSyncConfigFindCommand command) {
     Pageable pageable = createPage(command.sortDirection(), command.sortField(), command.size());
 
@@ -60,6 +61,7 @@ public class BasicAutoSyncConfigService implements AutoSyncConfigService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public CursorPageResponseAutoSyncConfigDto findAllByInfoId(AutoSyncConfigFindCommand command) {
     Pageable pageable = createPage(command.sortDirection(), command.sortField(), command.size());
     Slice<AutoSyncConfigDto> slice = autoSyncConfigRepository.findAllByIndexInfo_Id(
@@ -69,6 +71,7 @@ public class BasicAutoSyncConfigService implements AutoSyncConfigService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public CursorPageResponseAutoSyncConfigDto findAllByEnabled(AutoSyncConfigFindCommand command) {
     Pageable pageable = createPage(command.sortDirection(), command.sortField(), command.size());
 
@@ -79,6 +82,7 @@ public class BasicAutoSyncConfigService implements AutoSyncConfigService {
   }
 
   @Override
+  @Transactional(readOnly = true)
   public CursorPageResponseAutoSyncConfigDto findAllByInfoIdAndEnabled(
       AutoSyncConfigFindCommand command) {
     Pageable pageable = createPage(command.sortDirection(), command.sortField(), command.size());
